@@ -15,16 +15,16 @@ class Gaussian_module:
                 self.numAtom = int(num)
                 break
 
-    def getData(self, phrase="Symbolic Z-matrix:", ident=2):
+    def getData(self, phrase="Symbolic Z-matrix:", indent=2):
         #
         #Function to get inline data, mainly atomistic
         #Returns a numpy asarray
         #
-        ident=int(ident)
+        indent=int(indent)
         datalist = []
         for i in range(0, len(self.lines)):
             if phrase in self.lines[i]:
-                for i in range(int(i+ident), i+self.numAtom+ident):
+                for i in range(int(i+indent), i+self.numAtom+indent):
                    datalist.append(self.lines[i].split())
 
         return np.asarray(datalist).swapaxes(0,1)
@@ -47,13 +47,13 @@ class Gaussian_module:
 
         Atoms = pd.DataFrame()
 
-        Atoms['Atom Name']         = self.getData(phrase="Symbolic Z-matrix:", ident=2)[0]
-        coords                     = self.getData(phrase="Standard ori", ident=5)
+        Atoms['Atom Name']         = self.getData(phrase="Symbolic Z-matrix:", indent=2)[0]
+        coords                     = self.getData(phrase="Standard ori", indent=5)
         Atoms['X Coords']          = pd.to_numeric(coords[3])                                                                                                 
         Atoms['Y Coords']          = pd.to_numeric(coords[4])                                                                                                
         Atoms['Z Coords']          = pd.to_numeric(coords[5]) 
-        Atoms['Mulliken Charge']   = pd.to_numeric(self.getData(phrase='Summary of Natural Population Analysis:', ident=6)[2])
-        Atoms['NBO Charge']        = pd.to_numeric(self.getData(phrase='Mulliken charges:', ident=2)[2])
+        Atoms['Mulliken Charge']   = pd.to_numeric(self.getData(phrase='Summary of Natural Population Analysis:', indent=6)[2])
+        Atoms['NBO Charge']        = pd.to_numeric(self.getData(phrase='Mulliken charges:', indent=2)[2])
 
 
         self.Atoms = Atoms

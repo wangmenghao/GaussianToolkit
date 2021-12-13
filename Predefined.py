@@ -1,14 +1,22 @@
 Predefined = {
-    AtomName:{
+    'AtomName':{
+                'phrase':'Symbolic Z-matrix:',
+                'indent':2,
+                'index':0
 
     },
-    Coordinates:{
-
+    'Coordinates':{
+                'phrase':'Standard orientation',
+                'indent':2,
     },
-    MullikenCharges:{
-
+    'MullikenCharges':{
+                'phrase':'Mulliken charges:',
+                'indent':2,
+                'index':2
     },
-    NBOCHarges:{
-        
+    'NBOCHarges':{
+                'phrase':'Summary of Natural Population Analysis:',
+                'indent':6,
+                'index':2
     }
 }
