@@ -1,9 +1,10 @@
 import numpy as np
 import re
 import pandas as pd
-from scipy.spatial import distance_matrix
+from numpy.linalg import norm
 
-class Gaussian_module:
+
+class Molecule:
     def __init__(self, file):
         
         self.Atoms = pd.DataFrame()
@@ -57,3 +58,14 @@ class Gaussian_module:
 
 
         self.Atoms = Atoms
+
+
+class Calculator:
+
+    '''defines methods for data processing'''
+
+    def __init__(self) -> None:
+        pass
+
+    def distToOneAtom(a,b):
+        return norm(a,b)
