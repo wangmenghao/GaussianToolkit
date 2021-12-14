@@ -44,6 +44,8 @@ class Molecule:
 
     def buildDataFrame(self):
 
+        '''Build DataFrame of Molecues'''
+
         coords = []
 
         Atoms = pd.DataFrame()
