@@ -13,6 +13,6 @@ To be continued
 
 # Command line example
 
-
+![image](https://github.com/wangmenghao/GaussianToolkit/blob/main/img/cmdexmple.png)
 
 # Batch example
