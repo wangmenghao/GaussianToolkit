@@ -13,6 +13,9 @@ To be continued
 
 # Command line example
 
+Put log file in current folder
+
 ![image](https://github.com/wangmenghao/GaussianToolkit/blob/main/img/cmdexmple.png)
 
 # Batch example
+
