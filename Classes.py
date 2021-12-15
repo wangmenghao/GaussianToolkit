@@ -29,7 +29,7 @@ class Molecule:
                 for i in range(int(i+indent), i+self.numAtom+indent):
                    datalist.append(self.lines[i].split())
 
-        return np.asarray(datalist).swapaxes(0,1)
+        return np.asarray(datalist)
 
     def jobComplete(self):
         # function to check if gaussian job was completed
