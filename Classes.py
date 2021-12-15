@@ -41,7 +41,7 @@ class Molecule:
         for i in range(len(self.lines)-1, 0, -1):
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
-                   datalist.append(self.lines[i][10:].split())
+                   datalist.append(self.lines[i][12:].split())
 
         return np.asarray(datalist).swapaxes(0,1)
 
@@ -71,7 +71,7 @@ class Molecule:
 #        Atoms['Y Coords']          = pd.to_numeric(coords[4])                                                                                                
 #        Atoms['Z Coords']          = pd.to_numeric(coords[5]) 
 #        Atoms['Mulliken Charge']   = pd.to_numeric(self.getData(phrase='Mulliken Charges:', indent=2)[2])
-        Atoms['NBO Charge']        = pd.to_numeric(self.getChargeData(phrase='Summary of Natural Population Analysis:', indent=6)[2])
+        Atoms['NBO Charge']        = pd.to_numeric(self.getChargeData(phrase='Summary of Natural Population Analysis:', indent=6)[0])
 
 
         self.Atoms = Atoms
