@@ -42,7 +42,7 @@ class Molecule:
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
                    datalist.append(self.lines[i][11:33].split())
-
+                break
         return np.asarray(datalist).swapaxes(0,1)
 
     def jobComplete(self):
