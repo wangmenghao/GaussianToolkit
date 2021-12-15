@@ -17,18 +17,19 @@ class Molecule:
                 self.numAtom = int(num)
                 break
 
-    def getData(self, phrase="Symbolic Z-matrix:", indent=2):
+    def getData(self, phrase="Symbolic Z-matrix:", indent=2, start=0, end=2):
         #
         #Function to get inline data, mainly atomistic
         #Returns a numpy asarray
+        #By default, it returns atom name list
         #
         indent=int(indent)
         datalist = []
         for i in range(len(self.lines)-1, 0, -1):
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
-                   datalist.append(self.lines[i].split())
-
+                   datalist.append(self.lines[i][start:end].split())
+                break
         return np.asarray(datalist).swapaxes(0,1)
 
     def getChargeData(self, phrase="Summary of Natural Population Analysis:", indent=6):
@@ -66,31 +67,13 @@ class Molecule:
         Atoms = pd.DataFrame()
 
         Atoms['Atom Name']         = self.getData(phrase="Symbolic Z-matrix:", indent=2)[0]
-#        coords                     = self.getData(phrase="Standard ori", indent=5)
-#        Atoms['X Coords']          = pd.to_numeric(coords[3])                                                                                                 
-#        Atoms['Y Coords']          = pd.to_numeric(coords[4])                                                                                                
-#        Atoms['Z Coords']          = pd.to_numeric(coords[5]) 
+#        coords                     = self.getData(phrase="Standard ori", indent=5, start=38, end=70)
+#        Atoms['X Coords']          = pd.to_numeric(coords[0])                                                                                                 
+#        Atoms['Y Coords']          = pd.to_numeric(coords[1])                                                                                                
+#        Atoms['Z Coords']          = pd.to_numeric(coords[2]) 
 #        Atoms['Mulliken Charge']   = pd.to_numeric(self.getData(phrase='Mulliken Charges:', indent=2)[2])
-        Atoms['NBO Charge']        = self.getChargeData(phrase='Summary of Natural Population Analysis:', indent=6)[0]
+        Atoms['NBO Charge']        = self.getData(phrase='Summary of Natural Population Analysis:', indent=6,start=12, end=20)[0]
 
 
         self.Atoms = Atoms
-
-
-class Calculator:
-
-    '''defines methods for data processing'''
-
-    def __init__(self) -> None:
-        pass
-
-    def dist(A,B):
-        return math.sqrt(sum([(a - b)**2 for (a, b) in zip(A,B)]))
-
-    def distToOneAtom(atomDF, atomid=0):
-        coords = atomDF[["X Coords", "Y Coords", "Z Coords"]]
-        centerAtom = atomDF[["X Coords", "Y Coords", "Z Coords"]].iloc[atomid]
-
-        for i in atomDF:
-            d = self.dist(i, centerAtom)
             
