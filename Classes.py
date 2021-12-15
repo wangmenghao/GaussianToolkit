@@ -31,6 +31,20 @@ class Molecule:
 
         return np.asarray(datalist).swapaxes(0,1)
 
+    def getChargeData(self, phrase="Summary of Natural Population Analysis:", indent=6):
+        #
+        #Function to get inline data, mainly atomistic
+        #Returns a numpy asarray
+        #
+        indent=int(indent)
+        datalist = []
+        for i in range(len(self.lines)-1, 0, -1):
+            if phrase in self.lines[i]:
+                for i in range(int(i+indent), i+self.numAtom+indent):
+                   datalist.append(self.lines[i][10:].split())
+
+        return np.asarray(datalist).swapaxes(0,1)
+
     def jobComplete(self):
         # function to check if gaussian job was completed
         # label=0 ->  didnt finish
