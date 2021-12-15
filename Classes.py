@@ -52,11 +52,11 @@ class Molecule:
         Atoms = pd.DataFrame()
 
         Atoms['Atom Name']         = self.getData(phrase="Symbolic Z-matrix:", indent=2)[0]
-        coords                     = self.getData(phrase="Standard ori", indent=5)
-        Atoms['X Coords']          = pd.to_numeric(coords[3])                                                                                                 
-        Atoms['Y Coords']          = pd.to_numeric(coords[4])                                                                                                
-        Atoms['Z Coords']          = pd.to_numeric(coords[5]) 
-        Atoms['Mulliken Charge']   = pd.to_numeric(self.getData(phrase='Summary of Natural Population Analysis:', indent=6)[2])
+#        coords                     = self.getData(phrase="Standard ori", indent=5)
+#        Atoms['X Coords']          = pd.to_numeric(coords[3])                                                                                                 
+#        Atoms['Y Coords']          = pd.to_numeric(coords[4])                                                                                                
+#        Atoms['Z Coords']          = pd.to_numeric(coords[5]) 
+#        Atoms['Mulliken Charge']   = pd.to_numeric(self.getData(phrase='Summary of Natural Population Analysis:', indent=6)[2])
         Atoms['NBO Charge']        = pd.to_numeric(self.getData(phrase='Mulliken charges:', indent=2)[2])
 
 
