@@ -38,7 +38,7 @@ class Molecule:
         label = 0
         for i in self.lines:
         
-            if "@" in line:
+            if "@" in i:
                 label = 1
         return label
 
