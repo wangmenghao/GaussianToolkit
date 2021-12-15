@@ -41,9 +41,9 @@ class Molecule:
         for i in range(len(self.lines)-1, 0, -1):
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
-                   datalist.append(self.lines[i][12:21].split())
+                   datalist.append(self.lines[i][11:33].split())
 
-        return np.array(datalist).swapaxes(0,1)
+        return np.asarray(datalist).swapaxes(0,1)
 
     def jobComplete(self):
         # function to check if gaussian job was completed
