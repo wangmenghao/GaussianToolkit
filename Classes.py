@@ -24,7 +24,7 @@ class Molecule:
         #
         indent=int(indent)
         datalist = []
-        for i in range(0, len(self.lines)):
+        for i in range(len(self.lines), 0):
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
                    datalist.append(self.lines[i].split())
