@@ -25,3 +25,9 @@ def distToOneAtom(atomDF, atom="Ir"):
         distdf.append(d)
 
     atomDF["Distance to "+ atom + str(atomid)] = distdf
+
+def get_charges(atomDF, atom="N"):
+
+    return [atom, atomDF[atomDF["Atom Name"] == str(atom)]["NBO Charge"].values[0]]
+
+    
