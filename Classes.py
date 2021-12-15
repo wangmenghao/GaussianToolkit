@@ -2,6 +2,7 @@ import numpy as np
 import re
 import pandas as pd
 from numpy.linalg import norm
+import math
 
 
 class Molecule:
@@ -69,5 +70,13 @@ class Calculator:
     def __init__(self) -> None:
         pass
 
-    def distToOneAtom(a,b):
-        return norm(a,b)
+    def dist(A,B):
+        return math.sqrt(sum([(a - b)**2 for (a, b) in zip(A,B)]))
+
+    def distToOneAtom(atomDF, atomid=0):
+        coords = atomDF[["X Coords", "Y Coords", "Z Coords"]]
+        centerAtom = atomDF[["X Coords", "Y Coords", "Z Coords"]].iloc[atomid]
+
+        for i in atomDF:
+            d = self.dist(i, centerAtom)
+            
