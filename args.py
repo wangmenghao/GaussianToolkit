@@ -1,13 +1,21 @@
+import os, sys, csv
+import glob
 import Classes
 import Function
-import os, glob, csv
+
+print(sys.argv)
 
 rootdir = '.'
 
-fh = open('charge.csv', 'w+', newline='')
+filename = sys.argv[1]+".csv"
+print(filename)
+title = ['filename']
+for i in sys.argv[2:]:
+    title.append(i)
+    title.append(sys.argv[1])
+fh = open(filename, 'w+', newline='')
 write = csv.writer(fh)
-write.writerow(["filename", 'atom1', 'charge', 'atom2', 'charge'])
-
+write.writerow(title)
 
 Flist = glob.glob("*.log")
 for f in Flist:
@@ -29,4 +37,3 @@ for f in Flist:
         continue
 
 fh.close()
-    
