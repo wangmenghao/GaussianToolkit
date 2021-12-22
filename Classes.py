@@ -52,9 +52,9 @@ class Molecule:
         # label=0 ->  didnt finish
         # label=1 ->  completed
         label = False
-        for i in range(len(self.lines)-50, len(self.lines)):
+        for i in range(len(self.lines)-10, len(self.lines)):
         
-            if "@" in self.lines[i]:
+            if " Normal termination" in self.lines[i]:
                 label = True
         return label
 
