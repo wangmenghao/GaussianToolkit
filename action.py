@@ -18,11 +18,15 @@ for f in Flist:
     if mol.jobComplete() == True:
 
         mol.buildDataFrame()
-        pcharge = Function.get_charges_by_name(mol.Atoms, atom = "P", type="NBO")[1]
-        ncharge = Function.get_charges_by_name(mol.Atoms, atom = "N", type="NBO")[1]
-        datalist.extend(pcharge)
-        datalist.extend(ncharge)
-        print(datalist)
+        extracted = Function.distToOneAtom(mol.Atoms,"Ir")
+
+        pcharge = extracted.loc['P'].NBO
+        ncharge = extracted.loc['N'].NBO
+        #print(pcharge)
+        #ncharge = extracted[(extracted["Atom"] == "N" )]["NBO Charge"].item()
+        datalist.append(pcharge)
+        datalist.append(ncharge)
+#        print(datalist)
         write.writerow(datalist)
 
     else:
