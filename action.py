@@ -13,7 +13,7 @@ Flist = glob.glob("*.log")
 for f in Flist:
     datalist = []
     datalist.append(f)
-    print(f)
+    print("Currently processing: "+f)
     mol = Classes.Molecule(f)
     if mol.jobComplete() == True:
 
