@@ -15,12 +15,20 @@ for f in Flist:
     datalist.append(f)
     print(f)
     mol = Classes.Molecule(f)
-    mol.buildDataFrame()
-    pcharge = Function.get_charges(mol.Atoms, atom = "P")
-    ncharge = Function.get_charges(mol.Atoms, atom = "N")
+    if mol.jobComplete() == True:
 
-    datalist.extend(pcharge)
-    datalist.extend(ncharge)
-    write.writerow(datalist)
+        mol.buildDataFrame()
+        pcharge = Function.get_charges(mol.Atoms, atom = "P")
+        ncharge = Function.get_charges(mol.Atoms, atom = "N")
+        print(pcharge)
+        print(ncharge)
+        datalist.extend(pcharge)
+        datalist.extend(ncharge)
+
+
+    else:
+        print("Job "+ f + " is not complete")
+        continue
+write.writerow(datalist)
 fh.close()
     
