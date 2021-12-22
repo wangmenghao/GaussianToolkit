@@ -1,0 +1,26 @@
+import Classes
+import Function
+import os, glob, csv
+
+rootdir = '.'
+
+fh = open('charge.csv', 'w+')
+write = csv.writer(fh)
+write.writerow(["filename", 'atom1', 'charge', 'atom2', 'charge'])
+
+
+Flist = glob.glob("*.log")
+for f in Flist:
+    datalist = []
+    datalist.append(f)
+    print(f)
+    mol = Classes.Molecule(f)
+    mol.buildDataFrame()
+    pcharge = Function.get_charges(mol.Atoms, atom = "P")
+    ncharge = Function.get_charges(mol.Atoms, atom = "N")
+
+    datalist.extend(pcharge)
+    datalist.extend(ncharge)
+    write.writerow(datalist)
+fh.close()
+    
