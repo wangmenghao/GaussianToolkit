@@ -10,7 +10,10 @@ Including:
 
 distToOneAtom(molecule, atomid=#) : calculate the distances of all atoms in molecule to # atom, append to moleucule.Atoms.
 
-get_charges(molecule, atomname, type):
+get_charges_by_name(molecule, atomname, type):
+get charge of specified atom, Type can be mulliken or NBO. Make sure the atomname is unique.
+
+get_charges_by_id(molecule, atomid, type):
 get charge of specified atom, Type can be mulliken or NBO.
 
 

@@ -6,7 +6,7 @@ rootdir = '.'
 
 fh = open('charge.csv', 'w+', newline='')
 write = csv.writer(fh)
-write.writerow(["filename", 'atom1', 'charge', 'atom2', 'charge'])
+write.writerow(["filename", 'P', 'N'])
 
 
 Flist = glob.glob("*.log")
@@ -18,10 +18,11 @@ for f in Flist:
     if mol.jobComplete() == True:
 
         mol.buildDataFrame()
-        pcharge = Function.get_charges(mol.Atoms, atom = "P")
-        ncharge = Function.get_charges(mol.Atoms, atom = "N")
+        pcharge = Function.get_charges_by_name(mol.Atoms, atom = "P", type="NBO")[1]
+        ncharge = Function.get_charges_by_name(mol.Atoms, atom = "N", type="NBO")[1]
         datalist.extend(pcharge)
         datalist.extend(ncharge)
+        print(datalist)
         write.writerow(datalist)
 
     else:

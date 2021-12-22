@@ -25,11 +25,16 @@ for f in Flist:
     mol = Classes.Molecule(f)
     if mol.jobComplete() == True:
 
+        alist = sys.argv[2:]
+
+        print(alist)
+
         mol.buildDataFrame()
-        pcharge = Function.get_charges(mol.Atoms, atom = "P")
-        ncharge = Function.get_charges(mol.Atoms, atom = "N")
-        datalist.extend(pcharge)
-        datalist.extend(ncharge)
+
+        for i in alist:
+            charge = Function.get_charges_by_name(mol.Atoms, atom = i, type=sys.argv[2])
+            datalist.extend(charge)
+        print(datalist)
         write.writerow(datalist)
 
     else:

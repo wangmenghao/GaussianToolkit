@@ -3,7 +3,7 @@ Predefined = {
                 'phrase':'Symbolic Z-matrix:',
                 'indent':2,
                 'start':0,
-                'end':2
+                'end':5
     },
 
     'Coordinates':{
@@ -14,14 +14,14 @@ Predefined = {
     'MullikenCharges':{
                 'phrase':'Mulliken charges:',
                 'indent':2,
-                'start':13,
+                'start':12,
                 'end':22
     },
 
     'NBOCHarges':{
                 'phrase':'Summary of Natural Population Analysis:',
                 'indent':6,
-                'start':12,
+                'start':11,
                 'end':20
     },
 
