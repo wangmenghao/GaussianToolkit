@@ -20,6 +20,8 @@ for f in Flist:
         mol.buildDataFrame()
         extracted = Function.distToOneAtom(mol.Atoms,"Ir")
 
+#        print(extracted)
+
         pcharge = extracted.loc['P'].NBO
         ncharge = extracted.loc['N'].NBO
         #print(pcharge)

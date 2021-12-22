@@ -26,6 +26,7 @@ def distToOneAtom(atomDF, atom="Ir"):
         distdf.append(d)
 
     atomDF["DistTo"+ atom] = distdf
+    
     extracted = atomDF.sort_values(by="DistTo"+atom).groupby("Atom").first()
 
     return extracted

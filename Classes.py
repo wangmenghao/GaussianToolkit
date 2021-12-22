@@ -30,6 +30,7 @@ class Molecule:
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
                    datalist.extend(self.lines[i][start:end].split())
+                   #print(self.lines[i][start:end].split())
                 break
         return np.asarray(datalist)
 
@@ -43,7 +44,7 @@ class Molecule:
         for i in range(len(self.lines)-1, 0, -1):
             if phrase in self.lines[i]:
                 for i in range(int(i+indent), i+self.numAtom+indent):
-                   datalist.append(self.lines[i][11:33].split())
+                   datalist.append(self.lines[i][11:33].split(" "))
                 break
         return np.asarray(datalist).swapaxes(0,1)
 
@@ -68,7 +69,7 @@ class Molecule:
         Atoms = pd.DataFrame({"Atom":self.getData(phrase="Symbolic Z-matrix:", indent=2, start=0, end=5)})
 
 #        Atoms['Atom']         = self.getData(phrase="Symbolic Z-matrix:", indent=2, start=0, end=5)
-        coords                     = self.getData(phrase="Standard ori", indent=5, start=38, end=70).reshape(-1,3).swapaxes(0,1)
+        coords              = self.getData(phrase="Standard ori", indent=5, start=37, end=70).reshape(-1,3).swapaxes(0,1)
         Atoms['X']          = pd.to_numeric(coords[0])                                                                                                 
         Atoms['Y']          = pd.to_numeric(coords[1])                                                                                                
         Atoms['Z']          = pd.to_numeric(coords[2]) 
