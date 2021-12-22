@@ -72,7 +72,7 @@ class Molecule:
         Atoms['X']          = pd.to_numeric(coords[0])                                                                                                 
         Atoms['Y']          = pd.to_numeric(coords[1])                                                                                                
         Atoms['Z']          = pd.to_numeric(coords[2]) 
-        Atoms['Mulliken']   = self.getData(phrase='Mulliken charges:',indent=2, start=12, end=22)
+#        Atoms['Mulliken']   = self.getData(phrase='Mulliken charges:',indent=2, start=12, end=22)
         Atoms['NBO']        = self.getData(phrase='Summary of Natural Population Analysis:', indent=6,start=11, end=20)
 
 
